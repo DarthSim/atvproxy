@@ -2,7 +2,7 @@
 
 <atv>
   <head>
-    <script src="http://trailers.apple.com/js/utils" />
+    <script src="http://mobapi.bloomberg.com/js/utils" />
   </head>
   <body>
     <listWithPreview id="atvproxy_show">

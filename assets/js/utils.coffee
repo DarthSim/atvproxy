@@ -2,7 +2,7 @@ atv.config =
   doesJavaScriptLoadRoot: true,
   DISPLAY_NAME: "Turbofilm",
   DEBUG_LEVEL: 4,
-  ROOT_URL: "https://trailers.apple.com"
+  ROOT_URL: "https://mobapi.bloomberg.com"
 
 
 require = (module) ->

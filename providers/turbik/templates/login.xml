@@ -22,7 +22,7 @@
       </failureInstructions>
 
       <!-- TODO: Remove url from here -->
-      <urlToLoadAfterAuth>http://trailers.apple.com/page/static/nav</urlToLoadAfterAuth>
+      <urlToLoadAfterAuth>http://mobapi.bloomberg.com/page/static/nav</urlToLoadAfterAuth>
     </authentication>
   </body>
 </atv>

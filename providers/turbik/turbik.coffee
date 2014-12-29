@@ -84,10 +84,18 @@ class Turbik
         $('.myseriesbox').each ->
           episodes = []
           $('.myseriesblock, .myseriesblockc', @).each ->
+            episode_params = $('.myseriesbbs', @).map( -> $(@).text().replace('Сезон','S').replace('Эпизод', 'E') ).toArray()
+
+            lang_params = []
+            lang_params.push '♪EN' if $('.myseriesesound', @).length
+            lang_params.push '♪RU' if $('.myseriesrsound', @).length
+            lang_params.push '☰EN' if $('.myseriesesub', @).length
+            lang_params.push '☰RU' if $('.myseriesrsub', @).length
+
             episodes.push
               img: 'https:' + $('img', @).attr('src')
               title: $('.myseriesbten', @).text()
-              subtitle: $('.myseriesbbs', @).map( -> $(@).text() ).toArray().join(', ')
+              subtitle: episode_params.join(', ') + ' ' + lang_params.join(' ')
               url: $(@).closest('a').attr('href')
 
           shows.push
@@ -200,7 +208,7 @@ class Turbik
             to: parseFloat($('end', @).text().replace(',', '.'))
             text: $('text', @).text().replace(/[\r\n]+/g, ' ')
 
-        cache.put(cacheKey, info, 86400000)
+        cache.put(cacheKey, result, 86400000)
         callback(result)
 
   getEpisodeInfo: (params, episodeUrl, callback) ->
@@ -247,7 +255,6 @@ class Turbik
 
         episode_id  = metadata('eid').text()
         source_hash = metadata("sources2 #{quality}").text()
-        position = params.position || 0
 
         hash = crypto.createHash('sha1')
         hash.update(cookie + Math.random())
@@ -261,7 +268,7 @@ class Turbik
         hash.update(videoLang)
         lang_hash = hash.digest('hex')
 
-        url = "http://cdn.turbik.tv/#{lang_hash}/#{episode_id}/#{source_hash}/#{position}/#{cookie}/#{b}/#{a}"
+        url = "http://cdn.turbik.tv/#{lang_hash}/#{episode_id}/#{source_hash}/0/#{cookie}/#{b}/#{a}"
 
         currentEpisode = $('.epbox > span').closest('.epbox')
         nextEpisode = currentEpisode.next('.epbox')

@@ -56,8 +56,8 @@ do ->
           pointSize: 36.0
           color:
             red:   1
-            blue:  1
             green: 1
+            blue:  0.5
 
     showView: ->
       return if @nextEpisodeMarkView().__visible
@@ -164,8 +164,8 @@ do ->
             alignment: 'center'
             color:
               red:   1
-              blue:  1
               green: 1
+              blue:  0.5
       catch e
         utils.log 'Sub Error: '+ i + e.name + e.message + e.stack
 

@@ -14,8 +14,8 @@ class ATVServer
     cert: fs.readFileSync(CONFIG.ssl_cert)
 
   constructor: ->
-    http.createServer(@handler).listen(80)
-    https.createServer(@sslOptions, @handler).listen(443)
+    http.createServer(@handler).listen(8080)
+    https.createServer(@sslOptions, @handler).listen(8443)
 
   handler: (request, response) =>
     console.log "- request: #{unescape(request.url)}"
